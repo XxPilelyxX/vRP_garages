@@ -101,7 +101,7 @@ vRPgc = Tunnel.getInterface("vRP_garages","vRP_garages")
 MySQL.createCommand("vRP/ply_get_vehicles","SELECT * FROM vrp_user_vehicles WHERE user_id = @user_id")
 MySQL.createCommand("vRP/ply_remove_vehicle","DELETE FROM vrp_user_vehicles WHERE user_id = @user_id AND vehicle = @vehicle")
 MySQL.createCommand("vRP/ply_sell_vehicle","DELETE FROM vrp_user_vehicles WHERE user_id = @user_id AND vehicle = @vehicle")
-MySQL.createCommand("vRP/skiftnavn","UPDATE vrp_user_vehicles SET vehicle_name = @name WHERE user_id = @user_id AND vehicle = @vehicle")
+MySQL.createCommand("vRP/ply_skiftnavn","UPDATE vrp_user_vehicles SET vehicle_name = @name WHERE user_id = @user_id AND vehicle = @vehicle")
 
 
 -- PLY_GARAGES
@@ -212,7 +212,7 @@ AddEventHandler("ply_garages:SkiftNavn", function(vehicle)
 		if navn == "" then
 			print("fejl")
 		else
-			MySQL.execute("vRP/skiftnavn", {name = navn, user_id = user_id, vehicle = vehicle})
+			MySQL.execute("vRP/ply_skiftnavn", {name = navn, user_id = user_id, vehicle = vehicle})
 		end
 	end})
 end)
